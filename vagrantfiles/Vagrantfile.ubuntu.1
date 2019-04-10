@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
     config.vm.box = "bento/ubuntu-16.04"
     config.vm.box_version = "2.3.5"
     config.vm.box_check_update = false
-    config.vm.hostname = 'hopstest1'
+    config.vm.hostname = 'slave1'
     config.vm.boot_timeout =3600
 
     config.vm.network :forwarded_port, guest: 22, host: 10001, id: "ssh"
@@ -20,10 +20,10 @@ Vagrant.configure("2") do |config|
 
     config.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-      v.customize ["modifyvm", :id, "--memory", 4096]
+      v.customize ["modifyvm", :id, "--memory", 10240]
       v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
       v.customize ["modifyvm", :id, "--nictype1", "virtio"]
-      v.customize ["modifyvm", :id, "--name", "hopstest1"]
+      v.customize ["modifyvm", :id, "--name", "slave1"]
       v.customize ["modifyvm", :id, "--cpus", "4"]
     end
 
