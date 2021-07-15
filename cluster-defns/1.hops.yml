@@ -4,13 +4,12 @@ baremetal:
 
 cookbooks:       
   hops:                                                                     
-    github: "logicalclocks/hops-hadoop-chef"
-    branch: "master"  
+    github: "smkniazi/hops-hadoop-chef"
+    branch: "hopsfs-mount"  
 
 attrs:
   install:
     dir: /srv/hops
-    user: vagrant
   kagent:
     enabled: "false"
   hops:
@@ -33,3 +32,5 @@ groups:
       - hops::dn
       - hops::rm
       - hops::nm
+      - hops::fuse_mnt
+

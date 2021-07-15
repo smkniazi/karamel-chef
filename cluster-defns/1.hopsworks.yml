@@ -1,11 +1,11 @@
-name: HopsworksVagrantSingleNode
+name: HopsworksVagrantSingleNodeSalman
 baremetal:
     username: vagrant
 
 cookbooks:
   hopsworks:
-    github: logicalclocks/hopsworks-chef
-    branch: master
+    github: smkniazi/hopsworks-chef
+    branch: hopsfs-mount 
 
 attrs:
   install:
@@ -25,6 +25,10 @@ attrs:
     kagent_liveness:
       enabled: true
       threshold: "40s"
+    hdfs:
+      storage_policy:
+        base: HOT
+        log: HOT
   elastic:
     opendistro_security:
       jwt:
@@ -79,3 +83,4 @@ groups:
       - consul::master
       - hops::docker_registry
       - onlinefs
+      - hops::fuse_mnt
